@@ -1,0 +1,194 @@
+/* ===== NAVBAR STYLES ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-medium);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-github {
+  position: absolute;
+  right: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.navbar.scrolled .navbar-github {
+  color: var(--primary-color);
+}
+
+.navbar-github::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255, 255, 255, 0.7));
+  transition: width 0.3s ease, background 0.3s;
+}
+
+.navbar.scrolled .navbar-github::after,
+.navbar.scrolled .navbar-github:hover::after {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.navbar-github:hover::after {
+  width: 80%;
+}
+
+.navbar-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.navbar.scrolled .navbar-link {
+  color: var(--text-dark);
+}
+
+.navbar-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255, 255, 255, 0.7));
+  transition: width 0.3s ease, background 0.3s;
+}
+
+.navbar.scrolled .navbar-link::before {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.navbar-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.navbar.scrolled .navbar-link:hover {
+  color: var(--primary-color);
+  background: rgba(59, 130, 246, 0.1);
+  transition: var(--transition);
+}
+
+.navbar-link:hover::before,
+.navbar-link.active::before {
+  width: 80%;
+}
+
+.navbar.scrolled .navbar-link:hover::before,
+.navbar.scrolled .navbar-link.active::before {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.navbar-link.active {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.navbar.scrolled .navbar-link.active {
+  color: var(--primary-color);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* ===== Responsive Styles ===== */
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+    justify-content: space-between;
+  }
+
+  .navbar-menu {
+    gap: 1rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .navbar-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .navbar-github {
+    position: relative;
+    right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-github {
+    font-size: 1.2rem;
+  }
+
+  .navbar-menu {
+    gap: 0.5rem;
+  }
+
+  .navbar-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
