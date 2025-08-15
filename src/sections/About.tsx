@@ -24,7 +24,7 @@ const About = () => {
           <h3 className="about-subtitle">Education</h3>
           <p className="about-education">
             <FaUniversity className="inline-icon" />
-            &nbsp; Systems Engineering Student - Universidad del Quindio
+            &nbsp; Systems Engineering - Universidad del Quindio
           </p>
         </div>
       </div>
